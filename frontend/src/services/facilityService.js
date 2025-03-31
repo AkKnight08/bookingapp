@@ -1,10 +1,11 @@
 import axios from 'axios';
+import { API_URL } from '../config/api';
 
-const API_URL = '/api/facilities';
+const FACILITIES_URL = `${API_URL}/api/facilities`;
 
 const getAllFacilities = async () => {
   try {
-    const response = await axios.get(API_URL);
+    const response = await axios.get(FACILITIES_URL);
     return response.data;
   } catch (error) {
     throw error;
@@ -13,7 +14,7 @@ const getAllFacilities = async () => {
 
 const getFacilityById = async (id) => {
   try {
-    const response = await axios.get(`${API_URL}/${id}`);
+    const response = await axios.get(`${FACILITIES_URL}/${id}`);
     return response.data;
   } catch (error) {
     throw error;

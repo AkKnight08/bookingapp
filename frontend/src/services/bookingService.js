@@ -1,10 +1,11 @@
 import axios from 'axios';
+import { API_URL } from '../config/api';
 
-const API_URL = 'http://localhost:8000/api/bookings';
+const BOOKINGS_URL = `${API_URL}/api/bookings`;
 
 const createBooking = async (bookingData) => {
   try {
-    console.log('Sending booking request to:', API_URL);
+    console.log('Sending booking request to:', BOOKINGS_URL);
     console.log('Booking data:', JSON.stringify(bookingData, null, 2));
     
     const token = localStorage.getItem('token');
@@ -12,7 +13,7 @@ const createBooking = async (bookingData) => {
       throw new Error('No authentication token found');
     }
 
-    const response = await axios.post(API_URL, bookingData, {
+    const response = await axios.post(BOOKINGS_URL, bookingData, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -39,7 +40,7 @@ const getMyBookings = async () => {
     const tokenPayload = JSON.parse(atob(token.split('.')[1]));
     const userId = tokenPayload.userId;
 
-    const response = await axios.get(`${API_URL}/user/${userId}`, {
+    const response = await axios.get(`${BOOKINGS_URL}/user/${userId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -58,7 +59,7 @@ const getBooking = async (id) => {
       throw new Error('No authentication token found');
     }
 
-    const response = await axios.get(`${API_URL}/${id}`, {
+    const response = await axios.get(`${BOOKINGS_URL}/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -77,7 +78,7 @@ const cancelBooking = async (id) => {
       throw new Error('No authentication token found');
     }
 
-    const response = await axios.patch(`${API_URL}/${id}/cancel`, null, {
+    const response = await axios.patch(`${BOOKINGS_URL}/${id}/cancel`, null, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
