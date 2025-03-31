@@ -18,8 +18,15 @@ const app = express();
 // CORS Configuration - Allows frontend to send cookies
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+    origin: [
+      'http://localhost:3000',
+      'http://localhost:5173',
+      'https://booking-app-frontend-ialhylu49-akshays-projects-cc44e273.vercel.app',
+      'https://booking-app-frontend-beryl.vercel.app'
+    ],
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
   })
 );
 
