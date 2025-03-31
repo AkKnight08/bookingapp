@@ -22,7 +22,8 @@ app.use(
       'http://localhost:3000',
       'http://localhost:5173',
       'https://booking-app-frontend-ialhylu49-akshays-projects-cc44e273.vercel.app',
-      'https://booking-app-frontend-beryl.vercel.app'
+      'https://booking-app-frontend-beryl.vercel.app',
+      'https://booking-app-frontend-rho.vercel.app'
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
